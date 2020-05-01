@@ -1,6 +1,6 @@
-# AV Scanner for CI
+# AV Scanner
 
-Anti-virus and malware scanning for CI or other automated contexts.
+Anti-virus and malware scanning for batch processing, CI, or other automated contexts.
 
 Run the anti-virus and malware detectors [ClamAV](https://www.clamav.net/) (clamscan)
 and [linux-malware-detect](https://github.com/rfxn/linux-malware-detect)
