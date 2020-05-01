@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+maldet -a "$1"
+
+# maldet opens the report file using $EDITOR, so set that to
+# cat rather than defaulting to vi.
+# Upstream PR merge might make this unnecessary eventually,
+# see https://github.com/rfxn/linux-malware-detect/pull/362
+EDITOR=cat maldet --report
+
+echo "OK: maldet found no malware in $1"

@@ -67,7 +67,7 @@ echo "$EICAR_TEST_FILE" > $BAD_DIR/badfile.txt
 
 # Check exit codes behaving as expected.
 
-echo "==> Testing ClamAV working as expected."
+echo "==> Testing clamscan..."
 
 clamscan $GOOD_DIR > clamav.log 2>&1 || {
 	echo "==> ERROR: ClamAV exited non-zero scanning known malware-free file, log:"
@@ -80,9 +80,9 @@ clamscan $BAD_DIR > clamav.log 2>&1 && {
 	exit 1
 }
 
-echo "==> OK: ClamAV is functioning correctly."
+echo "==> OK: clamscan is functioning correctly."
 
-echo "==> Testing maldet working as expected."
+echo "==> Testing maldet..."
 
 maldet -a $GOOD_DIR > maldet.log 2>&1 || {
 	echo "==> ERROR: maldet exited non-zero scanning known-malware-free file, log:"

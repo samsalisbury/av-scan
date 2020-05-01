@@ -5,8 +5,3 @@ set -euo pipefail
 clamscan "$1"
 
 echo "OK: ClamAV found no malware in $1"
-
-maldet -a "$1"
-ls -lah /usr/local/maldetect/logs/*
-
-echo "OK: maldet found no malware in $1"
