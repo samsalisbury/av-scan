@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+echo "==> Scanning directory $1 with ClamAV and maldet"
+
 clamscan "$1"
 
 echo "OK: ClamAV found no malware in $1"

@@ -2,13 +2,14 @@
 
 Anti-virus and malware scanning for CI or other automated contexts.
 
-Run the anti-virus and malware detectors ClamAV (clamscan) and linux-malware-detect
+Run the anti-virus and malware detectors [ClamAV](https://www.clamav.net/) (clamscan)
+and [linux-malware-detect](https://github.com/rfxn/linux-malware-detect)
 (maldet) against a single directory of files, print the generated reports, and exit
 with 0 if no malware detected, otherwise exit non-zero.
 
 ## Basic Usage
 
-You can simply clone this repository, and then run:
+Assuming you have Docker installed, simply clone this repository, and then run:
 
 ```shell
 export SCAN_DIR=/path/to/directory

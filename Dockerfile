@@ -7,6 +7,6 @@ RUN ./install
 
 COPY scan-dir* /
 
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/bin/bash", "-c"]
 
-CMD /scan-dir /files-to-scan
+CMD ["/bin/echo 'usage: </scan-dir | /scan-dir-clamav | /scan-dir-maldet> <DIR>'"]

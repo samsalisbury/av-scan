@@ -1,14 +1,23 @@
 SHELL := /usr/bin/env bash -euo pipefail -c
 
-REPO  ?= av-scan-files
+REPO  ?= av-scan
 TAG   ?= latest
 IMAGE ?= $(REPO):$(TAG)
+SCAN_DIR ?= $(CURDIR)
 
 build:
 	docker build -t $(IMAGE) .
 
 test: test-good test-bad
 	@echo "==> OK: All tests passed."
+
+scan: build
+	@\
+		if [ $(SCAN_DIR) = $(CURDIR) ]; then \
+			echo "==> WARNING: Scanning current directory which contains Malware test string in install script!"; \
+		fi; \
+		echo "==> Mounting $(SCAN_DIR) to /files-to-scan inside the container..."; \
+		docker run --rm -v $(SCAN_DIR):/files-to-scan $(IMAGE) "/scan-dir /files-to-scan"
 
 # TEST is a macro that takes 3 arguments:
 #
