@@ -18,8 +18,10 @@ test: test-good test-bad
 define TEST
 	@\
 		echo "==> Running against internal test directory."; \
+		set +e; \
 		docker run --rm $(IMAGE) $(1) $(2); \
 		GOT=$$?; \
+		set -e; \
 		if [[ $$GOT != $(3) ]]; then \
 			echo "ERROR: got $(1) $(2) == exit code $$GOT; want $(3)"; \
 			exit 1; \
@@ -43,4 +45,4 @@ test-good-maldet:
 	$(call TEST,/scan-dir-maldet,/av-test/good,0)
 
 test-bad-maldet:
-	$(call TEST,/scan-dir-maldet,/av-test/bad,1)
+	$(call TEST,/scan-dir-maldet,/av-test/bad,2)
